@@ -10,13 +10,13 @@ namespace ParseStringListingUniqueWordsAlphabetically
     {
         static void Main(string[] args)
         {
-            string paragraph = "I am a string, ok man? What do you want me to do.";
+            string paragraph = "I am a string, ok man? What do you a want me to do I.";
             Console.WriteLine(paragraph);
             char[] delimiters = { ' ', '.', ',', '?', '!' };
             string[] uniqueWords = paragraph.Split(delimiters);
             Array.Sort(uniqueWords);
-
-            foreach (var word in uniqueWords)
+            
+            foreach (var word in uniqueWords.Distinct())
             {
                 Console.WriteLine($"{word}");
             }
