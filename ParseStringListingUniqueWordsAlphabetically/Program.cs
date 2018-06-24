@@ -63,7 +63,7 @@ namespace ParseStringListingUniqueWordsAlphabetically
             Console.ReadKey();
 
             char[] sentenceDelimiter = { '.', '?', '!' };
-            char[] wordDelimiter = { ' ', ',', '.', '?', '!' };
+            char[] wordDelimiter = { ',', '.', '?', '!' };
 
 
             sentenceList = sentence.Split('.','?','!').ToList();
@@ -79,18 +79,20 @@ namespace ParseStringListingUniqueWordsAlphabetically
             
             Console.ReadKey();
 
-            wordList = sentence.ToLower().Split().Distinct().ToList();
+            wordList = sentence.ToLower().Split( ',', '.', '?', '!', ' ').Distinct().ToList();
 
             var queryTwo = from word in wordList
-                        orderby word
-                        select word;
+                           where word.Count() > 0
+                            orderby word
+                            select word;
                       
             foreach (var element in queryTwo)
             {
                 Console.WriteLine("Unique Word: {0}", element);
                 Console.WriteLine("Count: {0}", element.Count());
                 Console.WriteLine("Sentences:");
-                Console.WriteLine();
+              
+                Console.WriteLine(" {0} ");
             }
 
             Console.WriteLine();
